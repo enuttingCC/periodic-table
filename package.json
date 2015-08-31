@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "An AngularJS, ES6, Webpack, Node API example project creating a periodic table",
   "scripts": {
+    "start": "npm run api & npm run dev",
     "build": "webpack --config webpack.build.js --bail -p",
     "dev": "node node_modules/.bin/webpack-dev-server --history-api-fallback --hot --inline --progress",
-    "start:api": "nodemon ./api/",
+    "api": "nodemon ./api/",
     "test": "karma start",
     "test:live": "karma start --auto-watch --no-single-run"
   },
