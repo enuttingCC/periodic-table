@@ -1,6 +1,6 @@
-<div id="home-header" class="jumbotron">
-  <greeting name="home.name"></greeting>
+<div class="periodic-item" ng-style="home.getPosition(value.row, value.column)" style="background-color: rgba(73, 160, 154, 0.329412);" ng-repeat="(key, value) in home.elements">
+    <div class="number">{{ value.number }}</div>
+    <div class="symbol">{{ value.small }}</div>
+    <div class="name">{{ value.name }}</div>
+    <div class="mass">{{ value.molar }}</div>
 </div>
-
-<button class="btn btn-primary" ng-click="home.changeName()">Change</button>
-<button class="btn btn-danger" ng-click="home.randomName()">Random</button>

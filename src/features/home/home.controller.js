@@ -1,16 +1,25 @@
 export default class HomeController {
-  constructor(randomNames) {
-    this.random = randomNames;
-    this.name = 'World';
-  }
+    constructor(periodicElements) {
+        periodicElements.getElements().then((result) => {
+            this.elements = result;
+        }, (err) => {
+            console.log(err);
+        });
+    }
 
-  changeName() {
-    this.name = 'angular-tips';
-  }
+    getPosition(row, column) {
 
-  randomName() {
-    this.name = this.random.getName();
-  }
+        const width = 120;
+        const height = 160;
+
+        var blar = {
+            'position': 'absolute',
+            'left': `${column * width}px`,
+            'top': `${row * height}px`
+        };
+
+        return blar;
+    }
 }
 
-HomeController.$inject = ['randomNames'];
+HomeController.$inject = ['periodicElements'];
