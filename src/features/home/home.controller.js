@@ -1,24 +1,41 @@
 export default class HomeController {
     constructor(periodicElements) {
+        this.searchText = "";
+        this.elements = [];
+
         periodicElements.getElements().then((result) => {
-            this.elements = result;
+            for(let key in result.data) {
+                let element = result.data[key];
+
+                this.elements.push({
+                    name: element.name,
+                    symbol: element.small,
+                    number: element.number,
+                    mass: element.molar,
+                    row: element.row,
+                    column: element.column
+                });
+            }
         }, (err) => {
             console.log(err);
         });
     }
 
+    showDetails(element) {
+        console.log('element', element);
+    }
+
     getPosition(row, column) {
+        const width = 100;
+        const height = 125;
 
-        const width = 120;
-        const height = 160;
-
-        var blar = {
+        return {
             'position': 'absolute',
+            'width': `${width}px`,
+            'height': `${height}px`,
             'left': `${column * width}px`,
             'top': `${row * height}px`
         };
-
-        return blar;
     }
 }
 

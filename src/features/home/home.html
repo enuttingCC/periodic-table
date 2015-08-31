@@ -1,6 +1,9 @@
-<div class="periodic-item" ng-style="home.getPosition(value.row, value.column)" style="background-color: rgba(73, 160, 154, 0.329412);" ng-repeat="(key, value) in home.elements">
-    <div class="number">{{ value.number }}</div>
-    <div class="symbol">{{ value.small }}</div>
-    <div class="name">{{ value.name }}</div>
-    <div class="mass">{{ value.molar }}</div>
-</div>
+<section>
+    <input class="search-box" type="text" ng-model="home.searchText">
+    <div class="periodic-item" ng-click="home.showDetails(element)" ng-style="home.getPosition(element.row, element.column)" ng-repeat="element in home.elements | filter:home.searchText">
+        <div class="number">{{ element.number }}</div>
+        <div class="symbol">{{ element.symbol }}</div>
+        <div class="name">{{ element.name }}</div>
+        <div class="mass">{{ element.mass }}</div>
+    </div>
+</section>
