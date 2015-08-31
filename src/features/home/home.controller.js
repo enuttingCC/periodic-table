@@ -22,19 +22,53 @@ export default class HomeController {
     }
 
     showDetails(element) {
-        console.log('element', element);
+        const el = document.getElementById(`element-${element.name}`);
+        let properties = {};
+
+        if(!element.isActive) {
+            element.isActive = true;
+
+            properties = {
+                left: `${window.innerWidth / 2 - 100}px`,
+                top: `${window.innerHeight / 2 - 125}px`,
+                scale: 4,
+                rotationY: 180,
+                zIndex: 1000
+            }
+        } else {
+            element.isActive = false;
+
+            properties = {
+                left: `${element.position.left}px`,
+                top: `${element.position.top}px`,
+                scale: 1,
+                rotationY: 0,
+                zIndex: 10
+            }
+        }
+
+        properties.ease = Elastic.easeInOut.config(1, 1);
+
+        TweenMax.to(el, 1, properties);
     }
 
-    getPosition(row, column) {
+    getPosition(el) {
         const width = 100;
         const height = 125;
+        const left = el.column * width;
+        const top = el.row * height;
+
+        el.position = {
+            left,
+            top
+        };
 
         return {
             'position': 'absolute',
             'width': `${width}px`,
             'height': `${height}px`,
-            'left': `${column * width}px`,
-            'top': `${row * height}px`
+            'left': `${left}px`,
+            'top': `${top}px`
         };
     }
 }

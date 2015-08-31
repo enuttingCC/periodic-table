@@ -1,6 +1,6 @@
 <section>
     <input class="search-box" type="text" ng-model="home.searchText">
-    <div class="periodic-item" ng-click="home.showDetails(element)" ng-style="home.getPosition(element.row, element.column)" ng-repeat="element in home.elements | filter:home.searchText">
+    <div class="periodic-item" id="element-{{element.name}}" ng-click="home.showDetails(element)" ng-style="home.getPosition(element)" ng-repeat="element in home.elements | filter:home.searchText">
         <div class="number">{{ element.number }}</div>
         <div class="symbol">{{ element.symbol }}</div>
         <div class="name">{{ element.name }}</div>

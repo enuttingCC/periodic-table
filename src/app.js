@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import 'gsap/src/minified/TweenLite.min.js';
+import 'gsap/src/minified/TweenMax.min.js';
 import './main.css';
 
 import angular          from 'angular';
